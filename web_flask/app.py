@@ -9,11 +9,11 @@ from werkzeug.utils import secure_filename
 import numpy as np
 
 import tensorflow as tf
-from keras.models import load_model
+from tensorflow.keras.models import load_model
 
 from app_utils import features_extraction_with_mfcc_test, predict_speech_recognition, predict_speaker_verification
 
-tf.logging.set_verbosity(tf.logging.ERROR) # hide warning
+# tf.logging.set_verbosity(tf.logging.ERROR) # hide warning
 
 UPLOAD_FOLDER = './voices'
 ALLOWED_EXTENSIONS = set(['wav'])
@@ -682,7 +682,7 @@ class SpeakerVerificationModel:
     def __init__(self):
         self.model = load_model("./models/SV/model_weights_1_1.h5")
         # self.model._make_predict_function()
-        self.graph = tf.get_default_graph()
+        self.graph = tf.compat.v1.get_default_graph()
 
     # def predict(self, X=[]):
     #     return self.model.predict(X)
@@ -692,7 +692,7 @@ class SpeechRecognitionModel:
     def __init__(self):
         self.model = load_model("./models/SR/model_weights_SR_3_2.h5")
         # self.model._make_predict_function()
-        self.graph = tf.get_default_graph()
+        self.graph = tf.compat.v1.get_default_graph()
 
     # def predict(self, X):
     #     return self.model.predict(X)
@@ -706,10 +706,18 @@ def load_keras_model():
     # model_sr.model.summary()
     print(" * Keras model loaded.")
 
+# main program
 load_keras_model()
 
+try:
+    if mysql is None:
+        print("database object is empty.")
+except NameError:
+    print("cannot connect to database.")
+print(" * Starting flask web server...")
+
 if __name__ == '__main__':  
-    app.run(debug=False, host='0.0.0.0', threaded=False)
+    app.run(debug=True, host='0.0.0.0', threaded=False)
 
 
 
