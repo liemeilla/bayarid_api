@@ -47,7 +47,7 @@
 
 ### Run MySQL on Docker
 ```
-docker run -it -p 3306:3306 --name bayarid-mysql- -e MYSQL_ROOT_PASSWORD=root mysql:5 
+docker run -d -p 3306:3306 --name bayarid-mysql -e MYSQL_ROOT_PASSWORD=root mysql:5 
 ```
 
 
