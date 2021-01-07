@@ -1,6 +1,6 @@
 # Bayar ID API
 
-### Prerequisite
+### Prerequisitess
 
 1. Install virtual environment
     - CD ke folder 'web_flask'
