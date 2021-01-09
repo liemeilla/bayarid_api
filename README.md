@@ -1,9 +1,16 @@
-# Bayar ID API
+# BAYAR ID API
+
+<p>
+BAYAR ID API is a part of my undergraduate thesis for my Computer Science bachelor degree in Universitas Tarumanagara. 
+This API is being develop by python and using flask framework. This API is mainly a service that will serve a mobile application 
+called BAYAR ID in Android Platform. To see the BAYAR ID android app you can refer to this [repository](https://github.com/liemeilla/bayarid_android)
+
+</p>
 
 ### Prerequisites
 
 1. Python Installation
-    This project needs python version 3.6.6
+    <p>This project needs python version 3.6.6</p>
 
 2. Virtual Environment Installation
 	- Windows:
